@@ -4,7 +4,7 @@ from django.db.models import F
 
 # Create your models here.
 class Employee(AbstractUser):
-    sales = models.BigIntegerField()
+    sales = models.BigIntegerField(default=0)
 
 
     def sale(self,products):
