@@ -40,5 +40,7 @@ class AnalysisView(ListAPIView):
         product = Product.objects.all().order_by('-sales').first()
         # objserializer = EmployeeSerializer(object)
         # qsetserializer = ProductSerializer(queryset)
-        return Response({'employee':f'{object.username} has highest sales {object.sales}','products':f'{product.name} has High Sales {product.sales}'})
+        if not object.sales ==0:
+            return Response({'employee':f'{object.username} has highest sales {object.sales}','products':f'{product.name} has High Sales {product.sales}'})
+        return Response('Sales Not Yet Started')
         #  Category.objects.annotate(product_count=Count('product')).aggregate(max_count=Max('product_count'))
